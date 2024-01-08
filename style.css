@@ -18,7 +18,7 @@ body {
 .links h1 {
   color: white;
   font-size: clamp(30px, 8vw, 60px);
-  font-family: "Poppins", sans-serif;
+  font-family: hoefler-text, serif;
   font-weight: 400;
   text-align: center;
   margin-top: 200px;
@@ -73,10 +73,10 @@ body {
 }
 
 .logo{
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     scale: 1.5;
     top: 0;
     left: 0;
-    margin: 80px;
+    margin-top: 200px;
 }
