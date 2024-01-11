@@ -13,53 +13,57 @@ body {
 }
 
 @media screen and (max-width: 600px) {
-  
-  .logo{
+  .logo {
     margin-top: 50px;
     margin-bottom: 50px;
   }
 
+  .links h1 {
+    color: white;
+    font-size: 22px;
+    font-family: hoefler-text, serif;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    letter-spacing: 10px;
+  }
 }
 
 @media screen and (min-width: 600px) {
-
-  .logo{
+  .logo {
     margin-top: 200px;
   }
 
-}
-
-
-.links h1 {
-  color: white;
-  font-size: clamp(30px, 8vw, 60px);
-  font-family: hoefler-text, serif;
-  font-weight: 400;
-  text-align: center;
-  margin-top: 200px;
-  margin-bottom: 100px;
-  letter-spacing: 10px;
-
+  .links h1 {
+    color: white;
+    font-size: clamp(30px, 8vw, 50px);
+    font-family: hoefler-text, serif;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 200px;
+    margin-bottom: 100px;
+    letter-spacing: 20px;
+  }
 }
 
 .links h4 {
-    color: white;
-    font-size: 20px;
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    text-align: center;
-    margin: 0 30px;
+  color: white;
+  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  text-align: center;
+  margin: 0 30px;
 }
 
-.links h4 a{
-    color: white;
-    font-size: 20px;
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    text-align: center;
-    text-decoration: none;
+.links h4 a {
+  color: white;
+  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  text-align: center;
+  text-decoration: none;
 }
-
 
 .indexed {
   z-index: 1 !important;
@@ -68,10 +72,10 @@ body {
 .bg {
   background-image: url("./assets//Coming\ Soon\ Image\ 6727.JPG");
   filter: blur(8px);
-  -webkit-filter: blur(8px);
+  -webkit-filter: blur(14px);
   margin: auto !important;
   width: 80vw;
-    height: 80vh;
+  height: 80vh;
 
   z-index: -1;
   object-fit: cover;
@@ -87,10 +91,10 @@ body {
   -webkit-filter: blur(0px);
 }
 
-.logo{
-    width: 100px;
-    height: 100px;
-    scale: 1.5;
-    top: 0;
-    left: 0;
+.logo {
+  width: clamp(90px, 20vw, 150px);
+  height: clamp(90px, 20vw, 150px);
+  scale: 1.5;
+  top: 0;
+  left: 0;
 }
