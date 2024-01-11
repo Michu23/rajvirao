@@ -37,7 +37,7 @@ body {
 
   .links h1 {
     color: white;
-    font-size: clamp(30px, 8vw, 40px);
+    font-size: clamp(30px, 8vw, 30px);
     font-family: hoefler-text, serif;
     font-weight: 400;
     text-align: center;
