@@ -12,7 +12,7 @@ body {
   background-color: black !important;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   .logo {
     margin-top: 50px;
     margin-bottom: 50px;
@@ -24,13 +24,13 @@ body {
     font-family: hoefler-text, serif;
     font-weight: 400;
     text-align: center;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin-top: 150px;
+    margin-bottom: 120px;
     letter-spacing: 10px;
   }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 768px) {
   .logo {
     margin-top: 200px;
   }
@@ -50,7 +50,7 @@ body {
 .links h4 {
   color: white;
   font-size: 20px;
-  font-family: "Poppins", sans-serif;
+  font-family: hoefler-text, serif;
   font-weight: 300;
   text-align: center;
   margin: 0 30px;
@@ -59,7 +59,7 @@ body {
 .links h4 a {
   color: white;
   font-size: 20px;
-  font-family: "Poppins", sans-serif;
+  font-family: hoefler-text, serif;
   font-weight: 300;
   text-align: center;
   text-decoration: none;
