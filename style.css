@@ -48,6 +48,12 @@ body {
     letter-spacing: 10px;
   }
 
+  .linkstexts {
+    position: fixed;
+    bottom: 0px;
+  }
+  
+
   .bg {
     background-image: url("./assets//Coming\ Soon\ Image\ 6727.JPG");
     filter: blur(20px);
