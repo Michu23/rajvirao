@@ -24,7 +24,10 @@ body {
 
 @media screen and (max-height: 667px) {
   .logo {
-    margin-top: 50px !important;
+    margin-top: 110px !important;
+  }
+  .pb-5 {
+    padding-bottom: 0px !important;
   }
 }
 
