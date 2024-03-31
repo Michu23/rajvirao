@@ -18,8 +18,12 @@
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   </head>
   <style>
+    body {
+      position: relative !important;
+    }
+
     .logo {
-      position: absolute;
+      /* position: absolute; */
       top: 25px;
       right: 50px;
       width: 70px;
@@ -40,12 +44,16 @@
       bottom: 20px;
       width: 240px;
       height: 70px;
-      z-index: 999;
+      z-index: 997;
     }
 
     @media (max-width: 767px) {
+      .hello-world {
+        font-size: 32px !important;
+      }
+
       .logo {
-        position: absolute;
+        /* position: absolute; */
         top: 36px;
         right: 50px;
         width: 50px;
@@ -66,153 +74,135 @@
         bottom: 20px;
         width: 150px;
         height: 70px;
-        z-index: 999;
+        z-index: 997;
       }
     }
 
-    #menuToggle {
-      display: block;
+    header {
       position: absolute;
-      top: 50px;
-      left: 50px;
-      z-index: 1;
-      -webkit-user-select: none;
-      user-select: none;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background-color: transparent;
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 30px;
     }
 
-    #menuToggle a {
-      text-decoration: none;
-      color: #232323;
-      transition: color 0.3s ease;
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+      justify-content: center;
+      align-items: center;
+      z-index: 998;
     }
 
-    #menuToggle a:hover {
-      color: tomato;
+    .overlay.active {
+      display: flex;
     }
 
-    #menuToggle input {
-      display: block;
-      width: 40px;
-      height: 32px;
-      position: absolute;
-      top: -7px;
-      left: -5px;
-      cursor: pointer;
-      opacity: 0; /* hide this */
-      z-index: 2; /* and place it over the hamburger */
-      -webkit-touch-callout: none;
-    }
-
-    /*
-    * Just a quick hamburger
-    */
-
-    #menuToggle span {
-      display: block;
-      width: 33px;
-      height: 4px;
-      margin-bottom: 5px;
+    .hamburger {
+      display: inline-block;
+      width: 45px;
+      height: 30px;
       position: relative;
-
-      background: #cdcdcd;
-      border-radius: 3px;
-
-      z-index: 1;
-
-      transform-origin: 4px 0px;
-
-      transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
-        background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+      cursor: pointer;
     }
-
-    #menuToggle span:first-child {
-      transform-origin: 0% 0%;
-    }
-
-    #menuToggle span:nth-last-child(2) {
-      transform-origin: 0% 100%;
-    }
-
-    /* 
- * Transform all the slices of hamburger
- * into a crossmark.
- */
-    #menuToggle input:checked ~ span {
-      opacity: 1;
-      transform: rotate(45deg) translate(-2px, -1px);
-      background: #232323;
-    }
-
-    /*
- * But let's hide the middle one.
- */
-    #menuToggle input:checked ~ span:nth-last-child(3) {
-      opacity: 0;
-      transform: rotate(0deg) scale(0.2, 0.2);
-    }
-
-    #menuToggle input:checked ~ span:nth-last-child(2) {
-      transform: rotate(-45deg) translate(0, -1px);
-    }
-
-    .blur {
-      filter: blur(13px);
-      position: absolute !important;
-      width: 100vw;
-      height: 100vh;
-    }
-
-    #menu {
+    .hamburger .line {
+      width: 100%;
+      height: 4px;
+      background-color: #fff;
       position: absolute;
-      width: 100vw;
-      height: 100vh !important;
-      margin: -100px 0 0 -50px;
-      padding: 50px;
-      padding-top: 125px;
-      bottom: 0px;
+      left: 0;
+      transition: transform 0.3s ease;
+    }
+    .hamburger .line.middle {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .hamburger .line.top {
+      top: 0;
+    }
+    .hamburger .line.bottom {
+      bottom: 0;
+    }
+    /* .hamburger.active .line.top {
+      transform: translateY(50%) rotate(45deg);
+    }
+    .hamburger.active .line.middle {
+      opacity: 0;
+    }
+    .hamburger.active .line.bottom {
+      transform: translateY(-50%) rotate(-45deg);
+    } */
 
-      /* background: #ededed; */
-      list-style-type: none;
-      -webkit-font-smoothing: antialiased;
-      /* to stop flickering of text in safari */
-
-      transform-origin: 0% 0%;
-      transform: translate(-100%, 0);
-
-      transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+    .menu {
+      position: relative;
+      width: 100%;
+      height: 100%;
     }
 
-    #menu li {
-      padding: 10px 0;
-      font-size: 22px;
+    .menu-nav {
+      position: absolute;
+      bottom: 10vh;
+      left: 8vw;
+
+      text-align: left;
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
     }
 
-    /*
- * And let's slide it in from the left
- */
-    #menuToggle input:checked ~ ul {
-      transform: none;
+    .hello-world {
+      font-size: 42px;
+      color: rgb(142, 142, 142);
+      font-weight: 400;
+      font-family: hoefler-text, serif;
+      text-transform: uppercase;
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .hello-world:hover {
+      color: #fff;
+      transition: all 0.3s ease-in-out;
     }
   </style>
+
   <body>
-    <div id="menuToggle">
-      <input type="checkbox" />
-
-      <span></span>
-      <span></span>
-      <span></span>
-
-      <ul id="menu">
-        <a href="#"><li>Home</li></a>
-        <a href="#"><li>About</li></a>
-        <a href="#"><li>Info</li></a>
-        <a href="#"><li>Contact</li></a>
-        <a href="https://erikterwan.com/" target="_blank"
-          ><li>Show me more</li></a
-        >
-      </ul>
+    <header>
+      <div class="hamburger" onclick="toggleMenu()">
+        <div class="line top"></div>
+        <div class="line middle"></div>
+        <div class="line bottom"></div>
+      </div>
+      <img src="assets/LogoIcon.svg" class="logo" />
+    </header>
+    <div class="overlay">
+      <div class="menu">
+        <div class="menu-nav">
+          <img
+            src="assets/LogoIcon.svg"
+            class="logo"
+            style="margin-bottom: 40px; scale: 1.3"
+          />
+          <div class="hello-world">Home</div>
+          <div class="hello-world">About Us</div>
+          <div class="hello-world">All Products</div>
+          <div class="hello-world">Catogeries</div>
+          <div class="hello-world">Cart</div>
+        </div>
+      </div>
     </div>
-    <img src="assets/LogoIcon.svg" class="logo" />
     <div class="logo2">
       <img src="assets/LogoName.svg" class="logoName" />
     </div>
@@ -259,13 +249,27 @@
                     <a
                       class="block z-20 w-[11px] h-[11px]"
                       href="/products/anita-max-wynn-hat-blue"
-                      style="position: absolute; left: 32.2086%; top: 22.8523%"
+                      style="position: absolute; left: 32.2086%; top: 20.8523%"
                     >
                       <lottie-player
                         src="assets/Link.json"
                         background="transparent"
-                        speed="1"
-                        style="width: 30px; height: 30px"
+                        speed="1.6"
+                        style="width: 50px; height: 50px"
+                        loop3
+                        autoplay
+                      ></lottie-player>
+                    </a>
+                    <a
+                      class="block z-20 w-[11px] h-[11px]"
+                      href="/products/anita-max-wynn-hat-blue"
+                      style="position: absolute; left: 32.2086%; top: 46%"
+                    >
+                      <lottie-player
+                        src="assets/Link.json"
+                        background="transparent"
+                        speed="1.6"
+                        style="width: 50px; height: 50px"
                         loop
                         autoplay
                       ></lottie-player>
@@ -273,27 +277,13 @@
                     <a
                       class="block z-20 w-[11px] h-[11px]"
                       href="/products/anita-max-wynn-hat-blue"
-                      style="position: absolute; left: 32.2086%; top: 50%"
+                      style="position: absolute; left: 54%; top: 34%"
                     >
                       <lottie-player
                         src="assets/Link.json"
                         background="transparent"
-                        speed="1"
-                        style="width: 30px; height: 30px"
-                        loop
-                        autoplay
-                      ></lottie-player>
-                    </a>
-                    <a
-                      class="block z-20 w-[11px] h-[11px]"
-                      href="/products/anita-max-wynn-hat-blue"
-                      style="position: absolute; left: 56%; top: 36%"
-                    >
-                      <lottie-player
-                        src="assets/Link.json"
-                        background="transparent"
-                        speed="1"
-                        style="width: 30px; height: 30px"
+                        speed="1.6"
+                        style="width: 50px; height: 50px"
                         loop
                         autoplay
                       ></lottie-player
@@ -301,13 +291,13 @@
                     <a
                       class="block z-20 w-[11px] h-[11px]"
                       href="/products/anita-max-wynn-hat-blue"
-                      style="position: absolute; left: 66%; top: 48%"
+                      style="position: absolute; left: 68%; top: 44%"
                     >
                       <lottie-player
                         src="assets/Link.json"
                         background="transparent"
-                        speed="1"
-                        style="width: 30px; height: 30px"
+                        speed="1.6"
+                        style="width: 50px; height: 50px"
                         loop
                         autoplay
                       ></lottie-player
@@ -320,5 +310,22 @@
         </div>
       </main>
     </div>
+
+    <script>
+      function toggleMenu() {
+        var hamburger = document.querySelector(".hamburger");
+        var menu = document.querySelector(".overlay");
+        hamburger.classList.toggle("active");
+        menu.classList.toggle("active");
+
+        //add an event lister of escape button to close the nav
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            hamburger.classList.remove("active");
+            menu.classList.remove("active");
+          }
+        });
+      }
+    </script>
   </body>
 </html>
