@@ -57,17 +57,13 @@
       }
 
       .hello-world {
-      font-size: 25px;
-      color: rgb(142, 142, 142);
-      font-weight: 400;
-      font-family: Spectral;
-      text-transform: uppercase;
-      transition: all 0.3s ease-in-out;
-      cursor: pointer;
-    }
-
-      .hello-world {
-        font-size: 32px !important;
+        font-size: 25px !important;
+        color: rgb(142, 142, 142);
+        font-weight: 400;
+        font-family: Spectral;
+        text-transform: uppercase;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
       }
 
       .logo {
@@ -162,6 +158,7 @@
 
     .hamburger.active .line.top {
       transform: rotate(45deg);
+      opacity: 0.5;
     }
 
     .hamburger.active .line.middle {
@@ -171,6 +168,7 @@
     .hamburger.active .line.bottom {
       transform: rotate(-45deg);
       margin-bottom: 20px;
+      opacity: 0.5;
     }
     .hamburger.active {
       width: 40px;
@@ -239,9 +237,9 @@
 
     .loader {
       /* Your loader styles */
-      position: fixed;
+      position: absolute;
       z-index: 9999;
-      width: 100vh !important;
+      width: 100% !important;
       height: 100vh;
       background-color: #fff;
     }
@@ -252,11 +250,29 @@
       height: 50px; /* Adjust size as needed */
       background-color: #ffffff; /* Example background color */
       border-radius: 50%; /* Makes it circular */
-      position: absolute;
+      position: absolute !important;
       top: 50%; /* Centers vertically */
       left: 50%; /* Centers horizontally */
       transform: translate(-50%, -50%);
       animation: blink 1s infinite alternate; /* Blink animation */
+    }
+
+    .logoicon {
+      display: none;
+    }
+
+    .splashLogo {
+      width: 200px !important;
+      height: 100px !important;
+      scale: 3;
+      position: absolute;
+    }
+
+    .logoicon.active {
+      display: block;
+      width: 50px;
+      height: 50px;
+      margin-top: 5px;
     }
 
     @keyframes blink {
@@ -271,12 +287,40 @@
     .lottie {
       scale: 4.5;
     }
+
+    /* Define the animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Apply the animation to the home screen content */
+    #mainContent {
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    /* Apply the animation to the header */
+    header {
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    /* Apply the animation to the logo and other elements */
+    .logo,
+    .headerlogo,
+    .cart,
+    .logoName {
+      animation: fadeIn 1s ease-in-out forwards;
+    }
   </style>
 
   <body>
-    <div class="">
+    <div class="loader">
       <div class="logosplash">
-        <img src="assets/LogoName.svg" class="logo" />
+        <img src="assets/LogoNameDark.svg" class="splashLogo" />
       </div>
     </div>
     <header>
@@ -285,7 +329,7 @@
         <div class="line middle"></div>
         <div class="line bottom"></div>
       </div>
-
+      <img src="assets/LogoIcon.svg" class="logo logoicon active" />
       <img src="assets/LogoName.svg" class="headerlogo" />
 
       <img src="assets/Cart.svg" class="cart" />
@@ -412,36 +456,26 @@
     <script>
       window.addEventListener("DOMContentLoaded", function () {
         var loader = document.querySelector(".loader");
-        setTimeout(function () {
-          loader.classList.add("hidden");
-        }, 3000);
-      });
-      function toggleMenu() {
-        var hamburger = document.querySelector(".hamburger");
-        var menu = document.querySelector(".overlay");
-        var logoName = document.querySelector(".logoName");
+        var mainContent = document.getElementById("mainContent");
+        var header = document.querySelector("header");
         var logo = document.querySelector(".logo");
+        var headerLogo = document.querySelector(".headerlogo");
         var cart = document.querySelector(".cart");
-        var headerlogo = document.querySelector(".headerlogo");
+        var logoName = document.querySelector(".logoName");
 
-        hamburger.classList.toggle("active");
-        menu.classList.toggle("active");
-        logoName.classList.toggle("active");
-        logo.classList.toggle("active");
-        cart.classList.toggle("active");
-        headerlogo.classList.toggle("active");
+        setTimeout(function () {
+          // Hide the loader
+          loader.style.display = "none";
 
-        // Add an event listener for the escape button to close the navigation
-        document.addEventListener("keydown", function (e) {
-          if (e.key === "Escape") {
-            hamburger.classList.remove("active");
-            menu.classList.remove("active");
-            logoName.classList.remove("active");
-            cart.classList.remove("active");
-            headerlogo.classList.remove("active");
-          }
-        });
-      }
+          // Trigger animation on home screen elements
+          mainContent.classList.add("fadeIn");
+          header.classList.add("fadeIn");
+          logo.classList.add("fadeIn");
+          headerLogo.classList.add("fadeIn");
+          cart.classList.add("fadeIn");
+          logoName.classList.add("fadeIn");
+        }, 3000); // Adjust the timeout as needed
+      });
     </script>
   </body>
 </html>
