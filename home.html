@@ -267,10 +267,6 @@
       animation: blink 1s infinite alternate; /* Blink animation */
     }
 
-    .logoicon {
-      display: none;
-    }
-
     .splashLogo {
       width: 200px !important;
       height: 100px !important;
@@ -278,11 +274,15 @@
       position: absolute;
     }
 
-    .logoicon.active {
+    .logoicon {
       display: block;
       width: 50px;
       height: 50px;
       margin-top: 5px;
+    }
+
+    .logoicon.active {
+      display: none !important;
     }
 
     @keyframes blink {
@@ -329,13 +329,13 @@
     }
 
     /* Apply the animation to the logo and other elements */
-    /* .logo,
+    .logo,
     .headerlogo,
     .cart,
     .logoName,
     .menu {
       animation: fadeIn 1.5s ease-in-out forwards;
-    } */
+    }
   </style>
 
   <body>
@@ -350,7 +350,7 @@
         <div class="line middle"></div>
         <div class="line bottom"></div>
       </div>
-      <img src="assets/LogoIcon.svg" class="logo logoicon active" />
+      <img src="assets/LogoIcon.svg" class="logo logoicon" />
       <img src="assets/LogoName.svg" class="headerlogo" />
 
       <img src="assets/Cart.svg" class="cart" />
@@ -498,7 +498,7 @@
         logo.classList.toggle("active");
         cart.classList.toggle("active");
         headerlogo.classList.toggle("active");
-        logoicon.classList.remove("active");
+        logoicon.classList.toggle("active");
 
         // Add an event listener for the escape button to close the navigation
         document.addEventListener("keydown", function (e) {
