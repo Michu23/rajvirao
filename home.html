@@ -24,6 +24,7 @@
       position: relative !important;
       height: 100vh;
       width: 100vw;
+      background-color: #fff !important;
     }
 
     .logo {
@@ -123,6 +124,7 @@
 
     .overlay.active {
       display: flex;
+      animation: fadeIn 1s ease-in-out forwards;
     }
 
     .logoName.overlay.active {
@@ -215,6 +217,8 @@
 
     .cart.active {
       display: block;
+      width: 50px;
+      margin-top: 5px;
     }
 
     .logo {
@@ -242,6 +246,12 @@
       width: 100% !important;
       height: 100vh;
       background-color: #fff;
+      opacity: 1; /* Set initial opacity to fully visible */
+      transition: opacity 1s ease; /* Add a transition for opacity */
+    }
+
+    .loader.hidden {
+      opacity: 0; /* When hidden class is added, fade out the loader */
     }
 
     .logosplash {
@@ -300,7 +310,8 @@
 
     /* Apply the animation to the home screen content */
     #mainContent {
-      animation: fadeIn 1s ease-in-out forwards;
+      transition: all 1s ease-in-out;
+      animation: fadeIn 3s ease-in-out forwards;
     }
 
     /* Apply the animation to the header */
@@ -308,13 +319,23 @@
       animation: fadeIn 1s ease-in-out forwards;
     }
 
+    .content-container {
+      display: none;
+    }
+
+    .content-container.active {
+      display: block;
+      animation: fadeIn 0.3s ease-in-out forwards !important;
+    }
+
     /* Apply the animation to the logo and other elements */
-    .logo,
+    /* .logo,
     .headerlogo,
     .cart,
-    .logoName {
-      animation: fadeIn 1s ease-in-out forwards;
-    }
+    .logoName,
+    .menu {
+      animation: fadeIn 1.5s ease-in-out forwards;
+    } */
   </style>
 
   <body>
@@ -349,7 +370,7 @@
       <img src="assets/LogoName.svg" class="logoName" />
     </div>
     <div class="flex flex-col min-h-[100vh] bg-black">
-      <main role="main" id="mainContent" class="flex-grow">
+      <main role="main" id="mainContent" class="flex-grow content-container">
         <div class="bg-black">
           <div style="filter: blur(0px)">
             <section>
@@ -456,26 +477,41 @@
     <script>
       window.addEventListener("DOMContentLoaded", function () {
         var loader = document.querySelector(".loader");
-        var mainContent = document.getElementById("mainContent");
-        var header = document.querySelector("header");
-        var logo = document.querySelector(".logo");
-        var headerLogo = document.querySelector(".headerlogo");
-        var cart = document.querySelector(".cart");
-        var logoName = document.querySelector(".logoName");
-
+        var content = document.querySelector(".content-container");
         setTimeout(function () {
-          // Hide the loader
-          loader.style.display = "none";
-
-          // Trigger animation on home screen elements
-          mainContent.classList.add("fadeIn");
-          header.classList.add("fadeIn");
-          logo.classList.add("fadeIn");
-          headerLogo.classList.add("fadeIn");
-          cart.classList.add("fadeIn");
-          logoName.classList.add("fadeIn");
-        }, 3000); // Adjust the timeout as needed
+          loader.classList.add("hidden");
+          content.classList.add("active");
+        }, 3000);
       });
+      function toggleMenu() {
+        var hamburger = document.querySelector(".hamburger");
+        var menu = document.querySelector(".overlay");
+        var logoName = document.querySelector(".logoName");
+        var logo = document.querySelector(".logo");
+        var cart = document.querySelector(".cart");
+        var headerlogo = document.querySelector(".headerlogo");
+        var logoicon = document.querySelector(".logoicon");
+
+        hamburger.classList.toggle("active");
+        menu.classList.toggle("active");
+        logoName.classList.toggle("active");
+        logo.classList.toggle("active");
+        cart.classList.toggle("active");
+        headerlogo.classList.toggle("active");
+        logoicon.classList.remove("active");
+
+        // Add an event listener for the escape button to close the navigation
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            hamburger.classList.remove("active");
+            menu.classList.remove("active");
+            logoName.classList.remove("active");
+            cart.classList.remove("active");
+            headerlogo.classList.remove("active");
+            logoicon.classList.remove("active");
+          }
+        });
+      }
     </script>
   </body>
 </html>
