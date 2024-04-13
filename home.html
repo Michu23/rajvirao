@@ -221,13 +221,13 @@
       margin-top: 5px;
     }
 
-    .logo {
+    /* .logo {
       display: block;
     }
 
     .logo.active {
       display: none;
-    }
+    } */
 
     .headerlogo {
       display: none;
@@ -498,7 +498,15 @@
         logo.classList.toggle("active");
         cart.classList.toggle("active");
         headerlogo.classList.toggle("active");
-        logoicon.classList.toggle("active");
+        // logoicon.classList.toggle("active");
+
+        // logoicon.style = "display: none !important;";
+
+        if (menu.classList.contains("active")) {
+          logoicon.style = "display: none !important;";
+        } else {
+          logoicon.style = "display: block !important;";
+        }
 
         // Add an event listener for the escape button to close the navigation
         document.addEventListener("keydown", function (e) {
