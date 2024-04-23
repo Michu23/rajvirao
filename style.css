@@ -59,8 +59,8 @@ body {
   .bg {
     background-image: url("./assets/t.jpg");
 
-    filter: blur(14px);
-    -webkit-filter: blur(14px);
+    filter: blur(24px);
+    -webkit-filter: blur(24px);
     width: 100vw;
     height: 88vh;
     margin-left: 2rem;
@@ -89,8 +89,8 @@ body {
 
   .bg {
     background-image: url("./assets/t.jpg");
-    filter: blur(7px);
-    -webkit-filter: blur(7px);
+    filter: blur(17px);
+    -webkit-filter: blur(17px);
     width: 80vw;
     height: 80vh !important;
 
