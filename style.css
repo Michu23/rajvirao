@@ -162,7 +162,8 @@ form {
   font-size: 16px;
   background-color: #2a2a2a;
   opacity: 0.5;
-  margin-top: 10px;
+  margin-top: 16px;
+  width: clamp(300px, 80vw, 400px);
 }
 
 input {
