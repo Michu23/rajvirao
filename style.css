@@ -81,7 +81,7 @@ body {
   }
 
   .linkstexts {
-    bottom: 80px;
+    bottom: 60px;
   }
 
   .bg {
@@ -199,7 +199,7 @@ button {
 }
 
 .mainlogo {
-  width: clamp(140px, 70vw, 500px);
+  width: clamp(100px, 50vw, 400px);
   height: auto;
   margin-top: 100px;
   object-fit: cover;
