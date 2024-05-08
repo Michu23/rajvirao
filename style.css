@@ -177,6 +177,11 @@ input {
 
 input::placeholder {
   color: #fff;
+  font-size: 14px;
+}
+
+input::placeholder {
+  color: #fff;
 }
 
 input:active,
@@ -186,7 +191,7 @@ input:focus {
 
 .content p {
   color: white;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 300;
   text-align: center;
   margin: 0 30px;
@@ -198,8 +203,19 @@ button {
   background-color: transparent;
 }
 
+.fa-arrow-right {
+  transform: scale(1);
+  transition: 0.3s ease-in-out;
+}
+
+.fa-arrow-right:hover {
+  color: #fff;
+  scale: 1.1;
+  opacity: 2;
+}
+
 .mainlogo {
-  width: clamp(100px, 50vw, 400px);
+  width: clamp(100px, 45vw, 400px);
   height: auto;
   margin-top: 100px;
   object-fit: cover;
