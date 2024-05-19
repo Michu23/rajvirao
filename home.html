@@ -22,7 +22,7 @@
 
     body {
       position: relative !important;
-      height: 100vh;
+      height: 100svh;
       width: 100vw;
       background-color: #fff !important;
     }
@@ -86,8 +86,12 @@
         width: 100vw;
         display: flex;
         justify-content: center;
-        position: absolute;
-        bottom: 20px;
+        position: fixed !important;
+        bottom: 20px !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin: auto !important;
+        z-index: 999;
       }
 
       .logoName {
