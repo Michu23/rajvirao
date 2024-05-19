@@ -45,7 +45,7 @@ body {
   .links h1 {
     color: white;
     font-size: 22px;
-    font-family: hoefler-text, serif;
+    font-family: "Helvetica", "Arial", sans-serif;
     font-weight: 400;
     text-align: center;
     margin-top: 150px;
@@ -100,7 +100,7 @@ body {
   .links h1 {
     color: white;
     font-size: clamp(30px, 8vw, 30px);
-    font-family: hoefler-text, serif;
+    font-family: "Helvetica", "Arial", sans-serif;
     font-weight: 400;
     text-align: center;
     margin-top: 100px;
@@ -112,7 +112,7 @@ body {
 .links h4 {
   color: white;
   font-size: 20px;
-  font-family: hoefler-text, serif;
+  font-family: "Helvetica", "Arial", sans-serif;
   font-weight: 300;
   text-align: center;
   margin: 0 30px;
@@ -121,7 +121,7 @@ body {
 .links h4 a {
   color: white;
   font-size: 20px;
-  font-family: hoefler-text, serif;
+  font-family: "Helvetica", "Arial", sans-serif;
   font-weight: 300;
   text-align: center;
   text-decoration: none;
