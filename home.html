@@ -47,8 +47,8 @@
     .logoName {
       position: absolute;
       bottom: 20px;
-      width: 240px;
-      height: 70px;
+      width: 280px;
+      height: auto;
       z-index: 997;
     }
 
@@ -74,7 +74,6 @@
       }
 
       .logo {
-        /* position: absolute; */
         top: 36px;
         right: 50px;
         width: 50px;
@@ -246,7 +245,8 @@
 
     .headerlogo.active {
       display: block;
-      width: 220px;
+      width: 280px;
+      height: auto;
       margin-top: 10px;
     }
 
@@ -276,13 +276,6 @@
       left: 50%; /* Centers horizontally */
       transform: translate(-50%, -50%);
       animation: blink 1s infinite alternate; /* Blink animation */
-    }
-
-    .splashLogo {
-      width: 200px !important;
-      height: 100px !important;
-      scale: 3;
-      position: absolute;
     }
 
     .logoicon {
@@ -348,15 +341,59 @@
       animation: fadeIn 1.5s ease-in-out forwards;
     }
 
+    /* Apply the animation to each nav option with staggered delays */
+    .menu-nav > * {
+      animation: fadeIn 1.5s ease-in-out forwards;
+      opacity: 0; /* Ensures elements are initially hidden */
+    }
+
+    .menu-nav > *:nth-child(1) {
+      animation-delay: 0s; /* No delay for the first element */
+      transform-origin: left;
+    }
+
+    .menu-nav > *:nth-child(2) {
+      transform-origin: left;
+      animation-delay: 0.3s; /* 0.3 seconds delay for the second element */
+    }
+
+    .menu-nav > *:nth-child(3) {
+      transform-origin: left;
+      animation-delay: 0.6s; /* 0.6 seconds delay for the third element */
+    }
+
+    .menu-nav > *:nth-child(4) {
+      transform-origin: left;
+      animation-delay: 0.9s; /* 0.9 seconds delay for the fourth element */
+    }
+
+    .menu-nav > *:nth-child(5) {
+      transform-origin: left;
+      animation-delay: 1.2s !important; /* 1.2 seconds delay for the fifth element */
+    }
+
     .image-container img {
       display: inline-block; /* Prevent image from breaking lines */
+    }
+
+    .spaced-out-logo {
+      width: 500px;
+      height: auto;
+      scale: 7;
+    }
+
+    .splashLogo {
+      width: 500px !important;
+      height: auto !important;
+      scale: 7;
+      position: absolute;
     }
   </style>
 
   <body>
     <div class="loader">
       <div class="logosplash">
-        <img src="assets/LogoNameDark.svg" class="splashLogo" />
+        <img src="assets/Logo/FinalSpacedOutLogo.png" class="splashLogo" />
       </div>
     </div>
     <header>
@@ -366,8 +403,7 @@
         <div class="line bottom"></div>
       </div>
       <img src="assets/LogoIcon.svg" class="logo logoicon" />
-      <img src="assets/FinalWhite.png" class="headerlogo" />
-
+      <img src="assets/Logo/FinalSpacedOutLogoWhite.png" class="headerlogo" />
       <img src="assets/Cart.svg" class="cart" />
     </header>
     <div class="overlay">
@@ -382,7 +418,7 @@
       </div>
     </div>
     <div class="logo2">
-      <img src="assets/FinalWhite.png" class="logoName" />
+      <img src="assets/Logo/FinalSpacedOutLogoWhite.png" class="logoName" />
     </div>
     <div class="flex flex-col min-h-[100vh] bg-black">
       <main role="main" id="mainContent" class="flex-grow content-container">
