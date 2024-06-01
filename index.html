@@ -12,13 +12,40 @@
       crossorigin="anonymous"
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="script.js"></script>
     <style>
       .email-sent {
         display: none;
         color: rgb(66, 255, 66) !important;
         text-align: center;
-        font-size: large !important;
+        font-size: 20px;
+        font-weight: 400;
+        font-family: "Helvetica", "Arial", sans-serif;
+        text-transform: uppercase;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+      }
+      .loader {
+        display: none;
+      }
+
+      @keyframes spin {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(359deg);
+        }
+      }
+
+      .three-quarter-spinner {
+        width: 30px;
+        height: 30px;
+        border: 3px solid #ffffff;
+        border-top: 3px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear 0s infinite;
       }
     </style>
   </head>
@@ -63,9 +90,9 @@
                   name="email"
                   required
                 />
-                <button type="submit">
-                  <?xml version="1.0" ?>
+                <button type="submit" id="submit-button">
                   <svg
+                    id="send-icon"
                     height="35"
                     class="fa-arrow-right"
                     viewBox="0 0 48 48"
@@ -79,6 +106,18 @@
                     />
                     <path d="M0 0h48v48h-48z" fill="none" />
                   </svg>
+                  <!-- <lottie-player
+                    
+                    src="/assets/Loading.json"
+                    speed="1"
+                    style="width: 95px; height: 95px"
+                    loop
+                    autoplay
+                    class="loader"
+                  ></lottie-player> -->
+                  <div class="spinner-box loader" id="loader">
+                    <div class="three-quarter-spinner"></div>
+                  </div>
                 </button>
               </form>
               <div class="d-flex justify-content-center">
@@ -93,16 +132,25 @@
       $(document).ready(function () {
         $("#submit-form").submit(function (e) {
           e.preventDefault();
+          $("#send-icon").hide(); // Hide the send icon
+          $("#loader").show(); // Show the loader
           $.ajax({
             url: "https://script.google.com/macros/s/AKfycbwDAlXhChwfoSchC6WeusETgrHQ08OKsUwWMxVC9_4UfFWUazFw59jT5C4RhyddUOtG/exec",
             data: $(this).serialize(),
             method: "post",
             success: function (response) {
-              $("#submit-form").hide(); // Hide the form
+              $("#loader").hide(); // Hide the loader
+              $("#send-icon").show(); // Show the send icon again
               $(".email-sent").show(); // Show the success message
+              $("#submit-form")[0].reset(); // Clear the input field
+              setTimeout(function () {
+                $(".email-sent").hide(); // Hide the success message after a delay
+              }, 3000); // Adjust the delay as needed
             },
             error: function (err) {
               alert("Something went wrong");
+              $("#send-icon").show(); // Show the send icon again if there's an error
+              $("#loader").hide(); // Hide the loader if there's an error
             },
           });
         });
