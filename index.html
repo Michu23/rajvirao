@@ -13,6 +13,14 @@
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="script.js"></script>
+    <style>
+      .email-sent {
+        display: none;
+        color: rgb(66, 255, 66) !important;
+        text-align: center;
+        font-size: large !important;
+      }
+    </style>
   </head>
   <body>
     <div class="container-fluid p-0 m-0">
@@ -20,7 +28,7 @@
         <div class="bg"></div>
       </div>
       <div
-        class="pt-5 links indexed indexed d-flex justify-content-center flex-column align-items-center"
+        class="pt-5 links indexed d-flex justify-content-center flex-column align-items-center"
       >
         <img src="assets/FinalWhite.png" class="mainlogo" alt="image" />
         <div class="d-none justify-content-center">
@@ -36,8 +44,8 @@
             <h4 class="d-none d-md-block">|</h4>
             <h4>
               <a href="mailto:info@rajvioar.com" target="_blank"
-                >info@rajvioar.com
-              </a>
+                >info@rajvioar.com</a
+              >
             </h4>
           </div>
         </div>
@@ -55,8 +63,9 @@
                   name="email"
                   required
                 />
-                <button type="submit" onclick="emailSent()">
-                  <?xml version="1.0" ?><svg
+                <button type="submit">
+                  <?xml version="1.0" ?>
+                  <svg
                     height="35"
                     class="fa-arrow-right"
                     viewBox="0 0 48 48"
@@ -73,9 +82,7 @@
                 </button>
               </form>
               <div class="d-flex justify-content-center">
-                <p class="email-sent" style="color: rgb(66, 255, 66)">
-                  Email sent!
-                </p>
+                <p class="email-sent">Email sent!</p>
               </div>
             </div>
           </div>
@@ -83,37 +90,21 @@
       </div>
     </div>
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var email = document.querySelector(".email-sent");
-        email.classList.toggle("d-none");
-      });
-
-      const emailSent = () => {
-        email.classList.toggle("d-none");
-        setTimeout(() => {
-          email.classList.toggle("d-none");
-        }, 3000);
-      };
-
-      $("#submit-form").submit((e) => {
-        e.preventDefault();
-        $.ajax({
-          url: "https://script.google.com/macros/s/AKfycbwDAlXhChwfoSchC6WeusETgrHQ08OKsUwWMxVC9_4UfFWUazFw59jT5C4RhyddUOtG/exec",
-          data: $("#submit-form").serialize(),
-          method: "post",
-          success: function (response) {
-            $(".email-sent").css("display", "block");
-
-            setTimeout(() => {
-              $(".email-sent").css("display", "none");
-            });
-
-            window.location.reload();
-            //window.location.href="https://google.com"
-          },
-          error: function (err) {
-            alert("Something Error");
-          },
+      $(document).ready(function () {
+        $("#submit-form").submit(function (e) {
+          e.preventDefault();
+          $.ajax({
+            url: "https://script.google.com/macros/s/AKfycbwDAlXhChwfoSchC6WeusETgrHQ08OKsUwWMxVC9_4UfFWUazFw59jT5C4RhyddUOtG/exec",
+            data: $(this).serialize(),
+            method: "post",
+            success: function (response) {
+              $("#submit-form").hide(); // Hide the form
+              $(".email-sent").show(); // Show the success message
+            },
+            error: function (err) {
+              alert("Something went wrong");
+            },
+          });
         });
       });
     </script>
