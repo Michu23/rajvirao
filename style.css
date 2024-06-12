@@ -215,7 +215,7 @@ button {
 }
 
 .mainlogo {
-  width: clamp(250px, 45vw, 400px);
+  width: clamp(350px, 45vw, 400px);
   height: auto;
   /* margin-top: 100px; */
   object-fit: cover;
