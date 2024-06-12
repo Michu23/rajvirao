@@ -97,9 +97,17 @@
         position: absolute;
         bottom: 20px;
         width: 150px;
-        height: 70px;
+        height: auto;
         z-index: 997;
       }
+    }
+
+    .logo2{
+      display: flex;
+    }
+
+    .logo2.active {
+      display: none;
     }
 
     header {
@@ -388,6 +396,66 @@
       scale: 5;
       position: absolute;
     }
+
+    .hotspot {
+      position: relative;
+      background-color: transparent;
+    }
+
+    .dot {
+      position: absolute;
+
+      width: 4px;
+      height: 4px;
+      background-color: white;
+      border-radius: 50%;
+      animation: pulse 1.9s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0.5);
+        opacity: 1;
+      }
+      20% {
+        transform: scale(1);
+      }
+      80% {
+        transform: scale(0.8);
+      }
+      100% {
+        transform: scale(0.8);
+        opacity: 1;
+      }
+    }
+    .wave {
+      position: absolute;
+      top: -13;
+      left: -13;
+      z-index: 10;
+      width: 30px;
+      height: 30px;
+      border: 0.001px solid white !important;
+      border-radius: 50%;
+      transform: scale(0);
+      animation: ripple 1.9s infinite;
+      opacity: 0;
+    }
+
+    @keyframes ripple {
+      0% {
+        transform: scale(0.1);
+        background: transparent !important;
+        background-color: transparent !important;
+        opacity: 0.6;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 0;
+        background: transparent !important;
+        background-color: transparent !important;
+      }
+    }
   </style>
 
   <body>
@@ -461,61 +529,49 @@
                   </picture>
                   <div class="absolute top-0 left-0 w-full h-full">
                     <a
-                      class="block z-20 w-[11px] h-[11px] lottie"
+                      style="position: absolute; left: 34.2086%; top: 23%"
                       href="/products/anita-max-wynn-hat-blue"
-                      style="position: absolute; left: 30.2086%; top: 12%"
+                      class="block z-20 w-[11px] h-[11px] lottie"
                     >
-                      <lottie-player
-                        src="assets/Lottie.json"
-                        background="transparent"
-                        speed="1.6"
-                        style="width: 50px; height: 50px"
-                        loop
-                        autoplay
-                      ></lottie-player>
+                    <div class="hotspot">
+                        <div class="dot"></div>
+
+                        <div class="wave"></div>
+                      </div>
                     </a>
                     <a
                       class="block z-20 w-[11px] h-[11px] lottie"
                       href="/products/anita-max-wynn-hat-blue"
-                      style="position: absolute; left: 28.2086%; top: 38%"
+                      style="position: absolute; left: 33.2086%; top: 48%"
                     >
-                      <lottie-player
-                        src="assets/Lottie.json"
-                        background="transparent"
-                        speed="1.6"
-                        style="width: 50px; height: 50px"
-                        loop
-                        autoplay
-                      ></lottie-player>
+                      <div class="hotspot">
+                        <div class="dot"></div>
+
+                        <div class="wave"></div>
+                      </div>
                     </a>
                     <a
                       class="block z-20 w-[11px] h-[11px] lottie"
                       href="/products/anita-max-wynn-hat-blue"
-                      style="position: absolute; left: 48%; top: 27%"
+                      style="position: absolute; left: 56%; top: 35%"
                     >
-                      <lottie-player
-                        src="assets/Lottie.json"
-                        background="transparent"
-                        speed="1.6"
-                        style="width: 50px; height: 50px"
-                        loop
-                        autoplay
-                      ></lottie-player
-                    ></a>
+                      <div class="hotspot">
+                        <div class="dot"></div>
+
+                        <div class="wave"></div>
+                      </div>
+                    </a>
                     <a
                       class="block z-20 w-[11px] h-[11px] lottie"
                       href="/products/anita-max-wynn-hat-blue"
-                      style="position: absolute; left: 64%; top: 36%"
+                      style="position: absolute; left: 64%; top: 48%"
                     >
-                      <lottie-player
-                        src="assets/Lottie.json"
-                        background="transparent"
-                        speed="1.6"
-                        style="width: 50px; height: 50px"
-                        loop
-                        autoplay
-                      ></lottie-player
-                    ></a>
+                      <div class="hotspot">
+                        <div class="dot"></div>
+
+                        <div class="wave"></div>
+                      </div>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -553,6 +609,7 @@
         var cart = document.querySelector(".cart");
         var headerlogo = document.querySelector(".headerlogo");
         var logoicon = document.querySelector(".logoicon");
+        var logo2 = document.querySelector(".logo2");
 
         hamburger.classList.toggle("active");
         menu.classList.toggle("active");
@@ -560,6 +617,7 @@
         logo.classList.toggle("active");
         cart.classList.toggle("active");
         headerlogo.classList.toggle("active");
+        logo2.classList.toggle("active");
         // logoicon.classList.toggle("active");
 
         // logoicon.style = "display: none !important;";
