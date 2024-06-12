@@ -17,14 +17,15 @@
     <style>
       .email-sent {
         display: none;
-        color: rgb(66, 255, 66) !important;
+        color: rgb(255, 255, 255) !important;
         text-align: center;
-        font-size: 20px;
+        font-size: 24px;
         font-weight: 400;
         font-family: "Helvetica", "Arial", sans-serif;
         text-transform: uppercase;
         transition: all 0.3s ease-in-out;
         cursor: pointer;
+        line-height: 1.5;
       }
       .loader {
         display: none;
@@ -80,7 +81,7 @@
           <div class="content">
             <div class="newsletter-component">
               <!-- <p>we are delighted to announce our upcoming collection. Please enter your email for priority updates and early access </p> -->
-              <p>
+              <p class="welcome-message">
                 WE ARE DELIGHTED TO ANNOUNCE OUR
                 <br />
                 UPCOMING COLLECTION
@@ -88,9 +89,20 @@
                 <!-- PLEASE ENTER YOUR EMAIL FOR 
                 PRIORITY UPDATES AND EARLY ACCESS -->
               </p>
+               <div class="d-flex justify-content-center">
+                <p
+                  class="email-sent"
+                  style="font-size: small; margin-top: 10px"
+                >
+                  We appreciate your interest in rajvioar,
+                  <br />
+                  we look forward to assisting you soon!
+                </p>
+              </div>
               <form
                 id="submit-form"
                 style="width: 100%"
+                class="the-form"
                 action="https://script.google.com/macros/s/AKfycbwDAlXhChwfoSchC6WeusETgrHQ08OKsUwWMxVC9_4UfFWUazFw59jT5C4RhyddUOtG/exec"
               >
                 <input
@@ -129,16 +141,7 @@
                   </div>
                 </button>
               </form>
-              <div class="d-flex justify-content-center">
-                <p
-                  class="email-sent"
-                  style="font-size: small; margin-top: 10px"
-                >
-                  We appreciate your interest in rajvioar,
-                  <br />
-                  we look forward to assisting you soon!
-                </p>
-              </div>
+             
             </div>
           </div>
         </section>
@@ -156,12 +159,13 @@
             method: "post",
             success: function (response) {
               $("#loader").hide(); // Hide the loader
-              $("#send-icon").show(); // Show the send icon again
               $(".email-sent").show(); // Show the success message
               $("#submit-form")[0].reset(); // Clear the input field
-              setTimeout(function () {
-                $(".email-sent").hide(); // Hide the success message after a delay
-              }, 3000); // Adjust the delay as needed
+              $("#submit-button").hide();
+              $(".welcome-message").hide();
+              $(".the-form").hide();
+              
+             
             },
             error: function (err) {
               alert("Something went wrong");
